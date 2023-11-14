@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Login = () => {
+const Dashboard = () => {
 
 
 return (
@@ -11,4 +11,4 @@ return (
 )
 }
 
-export default Login
+export default Dashboard

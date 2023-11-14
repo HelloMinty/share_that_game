@@ -18,7 +18,7 @@ const Login = (props) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/loginUser', userLogin, {withCredentials:true})
             .then((res) => {
-                navigate('/main')
+                navigate('/dashboard')
             })
             .catch((err) => {
                 setLoginErrors(err.response.data)
