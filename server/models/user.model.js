@@ -3,15 +3,10 @@ const bcrypt = require ('bcrypt')
 const { isEmail } = require ('validator')
 
 const UserSchema = new mongoose.Schema({
-    firstName: {
+    userName: {
     type: String,
-    required: [true, "First name is required"],
-    minlength: [2, "First name must be 2 characters or longer"]
-    },
-    lastName: {
-    type: String,
-    required: [true, "Last name is required"],
-    minlength: [2, "First name must be 2 characters or longer"]
+    required: [true, "userName is required"],
+    minlength: [2, "userName must be 2 characters or longer"]
     },
     email: {
     type: String,
@@ -36,6 +31,15 @@ UserSchema.pre('validate', function(next) {
     }
     next();
     });
+
+// UserSchema.pre('validate', function(next) {
+//         const potentialUser = User.findOne({email:req.body.email})
+//         if (potentialUser){
+//             res.status(400).json({message:'This email already exists, please log in'})
+//             console.log(res )
+//         }
+//     next();
+//     });
 
 UserSchema.pre('save', function(next) {
     bcrypt.hash(this.password, 10)
