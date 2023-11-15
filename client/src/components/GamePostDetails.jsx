@@ -8,14 +8,16 @@ import styles from './css/CommentStyle.module.css'
 
 
 
+
 const GamePostDetails = (props) => {
     const [gamePostDetails, setGamePostDetails] = useState({});
     const [userId, setUserId] = useState("");
     const [userName, setUserName] = useState("");
     const [comment, setComment] = useState("")
-    const [gamePostedBy, setGamePostedBy]= useState("");
+    // const [gamePostedBy, setGamePostedBy]= useState("");
     const [allComments, setAllComments] = useState([]);
     const [loggedUserInfo, setLoggedUserInfo] = useState({});
+    const [image, setImage] = useState();
     const {id} = useParams();
     const { loggedUserId, setLoggedUserId} = props;
 
@@ -26,7 +28,7 @@ const GamePostDetails = (props) => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/getoneuser/${loggedUserId}`)
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             setLoggedUserInfo(res.data)
             
         })
@@ -34,22 +36,20 @@ const GamePostDetails = (props) => {
             console.log(err)
         })
     },[loggedUserId])
-    console.log(loggedUserId)
+
 
     const onClickHandler =(e) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/gamecomments", {comment: comment, postedBy: loggedUserInfo.userName })
         .then(res => {
             // console.log(res)
-            setGamePostedBy(loggedUserInfo.userName)
-            setAllComments([...allComments])
+            setAllComments([...allComments, comment])
+            // setGamePostedBy(loggedUserInfo.userName)
 
         })
         .catch(err => {
             console.log(err)
         })
-
-
     }
     useEffect(()=> {
         axios.get(`http://localhost:8000/api/gamepost/${id}`)
@@ -57,6 +57,7 @@ const GamePostDetails = (props) => {
             // console.log(res.data)
             setGamePostDetails(res.data)
             setUserId(res.data.postedBy)
+            setImage(res.data.image)
         })
         .catch(err=> {
             console.log(err)
@@ -79,25 +80,26 @@ const GamePostDetails = (props) => {
             setAllComments(res.data)
         })
         .catch(err=>{
-            // console.log(err)
+            console.log(err)
         })
     },[])
 
     return (
-        <div>
-            <h1>Game Post Details for the game ~{gamePostDetails.title}~</h1>
-            <Link to={"/dashboard"}>Home</Link>
-            <ul>
-                <li>Game Title: {gamePostDetails.title}</li>
-                <li>Genre: {gamePostDetails.genre}</li>
-                <li>Description: {gamePostDetails.description}</li>
-                <l1>postedBy: {userName}</l1>
-            </ul>
-            <div>
+        <div className={styles.backgrounddetails}>
+            <div className={styles.infoContainer}>
+                <h1>{gamePostDetails.title} Details</h1>
 
+                <ul>
+                    <li className={styles.titleText}>Game Title: {gamePostDetails.title}</li>
+                    <li className={styles.genreText}>Genre: {gamePostDetails.genre}</li>
+                    <li>Description: {gamePostDetails.description}</li>
+                    <img className={styles.imageSize} src={image}></img>
+                    <br></br>
+                    <l1 className={styles.postedText}>Posted By: {userName}</l1>
+                </ul>
             </div>
             <div className={styles.mainContainer}>
-                <div className={styles.commentFlexbox}>
+                <div className={styles.chatFlex}>
                     <h3 className={styles.commentText}>Live Chat</h3>
                     <textarea 
                         value={comment}
@@ -105,18 +107,20 @@ const GamePostDetails = (props) => {
                         onChange={onChangeHandler}
                     />
                     <button 
-                        className={styles.commentButton}
+                        className={styles.chatSubmit}
                         onClick={onClickHandler}
-                        >Submit</button>
+                        >Send</button>
+                </div>
+                        <hr></hr>
                     {allComments.map((text)=>(
                         <div key={text._id} className={styles.commentContainer}>
-                            <p>{text.postedBy}: {text.comment}</p>
-                            <p>@ {text.createdAt}</p>
+                            <p className={styles.chatText}><span className={styles.userText}>{text.postedBy}</span>: {text.comment}</p>
+                            <p><span className={styles.dateText}>@ {text.createdAt}</span></p>
                             <hr></hr>
                         </div>
                     ))}
+            
             </div>
-        </div>
         </div>
     )
 }

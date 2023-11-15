@@ -67,7 +67,7 @@ const EditPost = () => {
                 <div>
                 {Errors.description? <p>{Errors.description.message}</p> : null}
                     <label>Description: </label>
-                        <input
+                        <textarea
                             type="text"
                             id="description"
                             value={gameDescription}

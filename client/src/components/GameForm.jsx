@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios'
 import { useNavigate, Link } from "react-router-dom";
+import styles from "../components/css/MainCss.module.css"
 
 
 const GameForm = (props) => {
@@ -8,6 +9,7 @@ const GameForm = (props) => {
     const [gameGenre, setGameGenre] = useState("");
     const [gameDescription, setGameDescription] = useState("");
     const [gamepostedBy, setGamePostedBy] = useState("");
+    const [image, setImage] = useState();
     const {loggedUserId, setLoggedUserId} = props;
 
     const [Errors, setErrors] = useState({});
@@ -19,7 +21,8 @@ const GameForm = (props) => {
         {title: gameTitle, 
             genre: gameGenre, 
             description: gameDescription,
-            postedBy: loggedUserId
+            postedBy: loggedUserId,
+            image: image
 
         })
         .then(res => {
@@ -30,6 +33,21 @@ const GameForm = (props) => {
         .catch(err => {
             console.log(err.response.data.errors)
             setErrors(err.response.data.errors)
+        })
+    }
+    const handleFile =(e) => {
+        const file = e.target.files[0];
+        const formdata = new FormData();
+        setImage(URL.createObjectURL(file));
+        formdata.append('file', file);
+        axios.post('url', formdata,{
+            headers: {
+                "Content-Type" : "multipart/form-data"
+            },
+        })
+        .then(res => setImage(URL.createObjectURL(file)))
+        .catch(err => {
+            console.log(err)
         })
     }
 
@@ -59,11 +77,22 @@ const GameForm = (props) => {
                 <div>
                 {Errors.description? <p>{Errors.description.message}</p> : null}
                     <label>Description: </label>
-                        <input
+                        <textarea
                             type="text"
                             value={gameDescription}
                             onChange={(e) => setGameDescription(e.target.value)}
                         />
+                </div>
+                    <br/><br/>
+                <div>
+                    <input 
+                        type="file" 
+                        onChange={handleFile}
+                    />
+                    <br/><br/>
+                    <div>
+                        <img className={styles.imageSize} src ={image}></img>
+                    </div>
                 </div>
                 <button>Submit</button>
             </form>

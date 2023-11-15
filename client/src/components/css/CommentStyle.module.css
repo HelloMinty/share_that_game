@@ -1,40 +1,82 @@
-.mainContainer {
+.mainContainer{
+    width: 20%;
+    border: 5px solid;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+.backgrounddetails {
+    background-image: url("../images/pexels-garrett-morrow-1649771.jpg");
+    background-size:cover;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: -200px;
+    width: 100vw;
+    margin-right: auto;
+    margin-left: auto;
+    color:rgba(255, 255, 255, 0.988);
 }
-.commentFlexbox {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+h1{
+    font-weight: bolder;
+    font-size: 4rem;
 }
-.commentText{
-    margin : 12px 0;
-    font-size: 1rem;
-    font-weight: 500;
+.homebtn{
+    background-color: rgb(24, 224, 224);
+}
+.linkText{
+    color: rgb(0, 0, 0)
+}
+.userText{
+    color:cyan
+}
+.dateText{
+    font-size: 12px;
+}
+.chatText{
+    font-size: 17px;
+}
+.chatSubmit{
+    background-color: rgb(186, 198, 186);
+    font-weight: bold;
+}
+.chatSubmit:hover{
+    background-color: rgb(135, 221, 135);
+    font-weight: bold;
 }
 .inputBox{
-    height:75px;
-    width: 465px;
-    background-color: #ffffff;
+    width: 40%;
+    height:100%;
+    background-color: rgb(55, 55, 55);
+    color:rgb(255, 255, 255);
+    font-size: 1.5rem;
 }
-.commentButton{
-    height:40px;
-    width:80px;
-    background-color: blue;
-    color: white;
-    padding: 5px;
-    border-style: none;
-    cursor: pointer;
-    margin-top: 1rem;
+
+.infoContainer{
+    border: 5px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    font-size: 20px;
 }
-.commentContainer{
-    height:75px;
-    width: 465px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    word-break: break-all;
+.postedText{
+    color:khaki
+}
+.genreText{
+    color: mediumslateblue;
+}
+.titleText{
+    color:rgb(248, 120, 120)
+}
+.chatFlex{
+    display:flex;
+    gap:5px;
+}
+.commentText{
+    margin-right:1.5rem;
+}
+.imageSize{
+    width:50%;
+    height:50%;
 }
