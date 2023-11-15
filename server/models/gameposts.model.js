@@ -17,6 +17,12 @@ const GamePostSchema = ({
         required: [true, "Description is required"],
         minLength: [10, "Description must be 10 characters or longer"],
         maxLength: [255, "Description must be less than 255 characters"]
+    },
+    postedBy: {
+        type: String
+    },
+    comments: {
+        type: String
     }
 })
 

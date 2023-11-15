@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = (props) => {
     const navigate = useNavigate()
+    // const [loggedUser, setLoggedUser] = useState("")
+    const {loggedUserId, setLoggedUserId} = props;
     const [userLogin, setUserLogin] = useState({
         email:'',
         password:''
@@ -18,9 +20,12 @@ const Login = (props) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/loginUser', userLogin, {withCredentials:true})
             .then((res) => {
-                navigate('/dashboard')
+                setLoggedUserId(res.data._id)
+                console.log(res.data._id)
+                navigate("/dashboard")
             })
             .catch((err) => {
+                console.log(err)
                 setLoginErrors(err.response.data)
             })
     }

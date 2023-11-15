@@ -26,6 +26,7 @@ const Register = (props) => {
         e.preventDefault()
         axios.post('http://localhost:8000/api/registerUser', user, {withCredentials:true})
             .then((res) => {
+                console.log(res)
                 navigate('/login')
             })
             .catch((err) => {
@@ -35,6 +36,7 @@ const Register = (props) => {
                 else{
                     setErrors(err.response.data.error.errors)
                 }
+                console.log(err)
             })
         }
         return (
