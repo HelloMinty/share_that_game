@@ -17,6 +17,7 @@ app.use(cors({
 const userRoutes = require("./routes/user.routes");
 userRoutes(app);
 require('./routes/gameposts.routes')(app);
+require('./routes/gamecomments.routes')(app);
 
 app.listen(8000, () => {
     console.log("Listening at Port 8000")

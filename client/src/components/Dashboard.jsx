@@ -33,6 +33,18 @@ const Dashboard = (props) => {
 
 
 
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:8000/api/gamepost/${id}`)
+        .then(res=>{
+            console.log(res)
+            const filteredGamePost = allGamePosts.filter(gamepost =>{
+                return gamepost._id !== id;
+            });
+            setAllGamePosts(filteredGamePost)
+        })
+    }
+
+
     return (
         <div>
             <nav>
@@ -49,16 +61,15 @@ const Dashboard = (props) => {
                                 return(
                                     <div key={gamepost._id}>
                                         <p>Game Title : {gamepost.title}</p>
+                                        <p>Game Description: {gamepost.description}</p>
                                         {gamepost.postedBy == loggedUserId 
                                         ? <Link to={`/edit/${gamepost._id}`}>Edit</Link>
                                         : null}
+                                        {gamepost.postedBy == loggedUserId 
+                                        ? <button onClick={()=> handleDelete(gamepost._id)}>Delete</button>
+                                        : null}
                                         <Link to={`/details/${gamepost._id}`}> Details</Link>
-                                        <br></br>
-                                        <label>Comment: </label>
-                                            <input
 
-                                            />
-                                            
                                         <hr></hr>
                                     </div>
                                 )
