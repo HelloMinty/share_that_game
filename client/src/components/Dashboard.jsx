@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios";
+import {FaSearch} from "react-icons/fa";
+import styles from "../components/css/SearchBarStyle.module.css";
+
+
 
 
 
 const Dashboard = (props) => {
     const [allGamePosts, setAllGamePosts]= useState([]);
     const [loggedUserInfo, setLoggedUserInfo] = useState({});
+    const [input, setInput] = useState("");
+    const [results, setResults] =useState([]);
     const { loggedUserId, setLoggedUserId} = props;
     const navigate = useNavigate()
     
@@ -54,12 +60,30 @@ const Dashboard = (props) => {
         })
     }
 
+    const fetchData = (value)=>{
+        fetch("http://localhost:8000/api/gamepost")
+        .then(res=>res.json())
+        .then((json) =>{
+            const results = json.filter((game)=>{
+                return value && game && game.title && game.title.toLowerCase().includes(value);
+            });
+            console.log(results)
+            setResults(results)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+    const handleChange = (value) => {
+        setInput(value);
+        fetchData(value);
+    }
+
 
     return (
         <div className='backgrounddashboard'>
                 <h1 className='p-3 '>{loggedUserInfo.userName}'s Dashboard</h1>
-                <h3 className='p-3 mb-2 '>Welcome {loggedUserInfo.userName}!</h3>
-                <button className="btn btn-outline-danger border-3 mt-2 mb-2 ms-1 buttonlink " onClick={logoutUser} > Logout</button>
+                <button className="btn btn-outline-danger border-3 mt-2 mb-2 ms-1"><Link to={"/logout"} className='buttonlink'>Logout</Link></button>
                 <main>
                     <h2>Game Posts</h2>
                     <button className="btn btn-outline-success border-3  mt-2 mb-4 ms-1"><Link to={"/gameform"} className='buttonlink'>Add A Post!</Link></button>
@@ -83,6 +107,24 @@ const Dashboard = (props) => {
                                 )
                             })
                         }
+                    </div>
+                    <div className={styles.inputWrapper}>
+                        <FaSearch id= "search-icon"/>
+                        <input
+                            placeholder="Type to search..."
+                            value={input}
+                            onChange={(e) => handleChange(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        {results.map((result,id)=>{
+                            return(
+                                <div key={id}>
+                                    <Link to={`/details/${result._id}`}className={styles.resultText}>{result.title}</Link>
+                                </div>
+                            )   
+                        })}
+                            
                     </div>
                 </main>
 

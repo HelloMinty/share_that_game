@@ -1,0 +1,19 @@
+.inputWrapper {
+    background-color: rgb(226, 191, 191);
+    width:50%;
+    border-radius: 10px;
+    height:2.5rem;
+    padding: 0 15px;
+    box-shadow: 0px 0px 8px #ddd;
+}
+input{
+    background-color: transparent;
+    border: none;
+    height:90%;
+    font-size: 1.25rem;
+    width:80%;
+    margin-left:5px;
+}
+.resultText{
+    color:white
+}
