@@ -30,10 +30,10 @@ const Login = (props) => {
             })
     }
 return (
-    <div >
-        <h1 >Login to Share That Game</h1>
-        <form   onSubmit={submitHandler} >
-            <label >Email:</label>
+    <div className='backgroundlogin'>
+        <h1 className='p-4 '>Login to Share That Game</h1>
+        <form  className='w-25 mx-auto' onSubmit={submitHandler} >
+            <label className="form-label h5 ">Email:</label>
             <input type="text" name="email" className='form-control' onChange={onChangeHandler} value={userLogin.email} />
             {
                     loginErrors.message ?
@@ -41,7 +41,7 @@ return (
                     :
                     null
                 }
-            <label >Password:</label>
+            <label className="form-label mt-2 h5 ">Password:</label>
             <input type="password" name="password" className='form-control' onChange={onChangeHandler} value={userLogin.password} />
             {
                     loginErrors.message ?
@@ -49,9 +49,9 @@ return (
                     :
                     null
                 }
-            <button className='btn btn-primary mt-3'>Login</button>
+            <button className=' btn btn-primary mt-3'>Login</button>
             <br />
-            <Link to={'/'} className='btn btn-primary mt-2'>Register</Link>
+            <Link to={'/'} className=' btn btn-primary mt-2'>Register</Link>
             
 
         </form>

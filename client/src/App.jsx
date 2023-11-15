@@ -18,7 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className='APP'>
+    <div className='APP '>
         <Routes>
           <Route index element={<  Register/>} />
           <Route path="/logout" element={<Logout/>} />

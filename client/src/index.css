@@ -1,18 +1,145 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+#html {
+  margin: 0px;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
 }
+#body {
+  margin: 0px;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+
+
+
+
+
+#root {
+
+  margin: 0 auto;
+  height: 100%;
+  padding: 0;
+  text-align: center;
+}
+.backgroundregister {
+  background-image: url("./components/images/pexels-lalesh-aldarwish-194511.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(255, 255, 255, 0.988);
+}
+.backgroundlogin {
+  background-image: url("./components/images/pexels-tomasz-filipek-1637436.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(255, 255, 255, 0.988);
+}
+.backgrounddashboard {
+  background-image: url("./components/images/pexels-garrett-morrow-2885014.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(216, 128, 232, 0.988)
+}
+
+.displaylink{
+  color: rgb(14, 219, 195);
+}
+.buttonlink{
+  color: rgb(244, 244, 244)
+}
+/* .backgroundlogin {
+  background-image: url("./components/images/pexels-mads-thomsen-2739013.jpg");
+  background-size: cover;
+  height: 1355px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.backgroundform {
+  background-image: url("./components/images/pexels-bogdan-r-anton-1088672.jpg");
+  background-size: cover;
+  height: 1355px;
+  margin-right: auto;
+  margin-left: auto;
+  color: rgb(12, 9, 1);
+}
+.backgrounddisplay{
+  background-image: url("./components/images/pexels-gutsbyjan-n-15272229.jpg");
+  background-size: cover;
+  height: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+.backgroundcard{
+  background-image: url("./components/images/pexels-bogdan-r-anton-1088672.jpg");
+  background-size: cover;
+  height: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0.6;
+  
+}
+.backgrounddisplayone{
+  background-image: url("./components/images/pexels-pixabay-315938.jpg");
+  background-size: cover;
+  height: 1355px;;
+  margin-right: auto;
+  margin-left: auto;
+  color: aliceblue;
+}
+.backgroundedit{
+  background-image: url("./components/images/pexels-kelly-2876511.jpg");
+  background-size: cover;
+  height: 1355px;;
+  margin-right: auto;
+  margin-left: auto;
+  color: rgb(255, 255, 255);
+}
+
+.transbox {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+
+}
+.displaylink{
+  color: blue;
+
+}
+ */
+/* .app{
+  width:1280px;
+} */
+
+
+
+
+
+
+
+
+
+/* 
+
 
 a {
   font-weight: 500;
@@ -23,13 +150,7 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+
 
 h1 {
   font-size: 3.2em;
@@ -66,4 +187,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
