@@ -90,9 +90,11 @@ const GameForm = (props) => {
                         onChange={handleFile}
                     />
                     <br/><br/>
-                    <div>
-                        <img className={styles.imageSize} src ={image}></img>
-                    </div>
+                    {image
+                    ?   <img className={styles.imageSize} src ={image}></img>    
+                    :   null
+                    }
+                    
                 </div>
                 <button>Submit</button>
             </form>

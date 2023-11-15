@@ -8,8 +8,10 @@ import { useState } from 'react';
 import GameForm from './components/GameForm';
 import EditPost from './components/EditPost';
 import GamePostDetails from './components/GamePostDetails';
-import CommentComponent from './components/CommentComponent';
+// import CommentComponent from './components/CommentComponent';
 import Nav from './components/Nav';
+
+
 
 function App() {
   const [loggedUserId, setLoggedUserId] = useState("")
@@ -19,7 +21,9 @@ function App() {
   return (
     <BrowserRouter>
     <div className='APP '>
-        <Nav/>
+        <Nav
+          loggedUserId={loggedUserId} setLoggedUserId={setLoggedUserId}
+        />
         <Routes>
           <Route index element={<  Register/>} />
           <Route path="/logout" element={<Logout/>} />
@@ -38,7 +42,7 @@ function App() {
             comments={comments} setComments={setComments}
             loggedUserId={loggedUserId} setLoggedUserId={setLoggedUserId}
           />} />
-          <Route path="/comment" element={<CommentComponent/>} />
+          {/* <Route path="/comment" element={<CommentComponent/>} /> */}
         </Routes>
     </div>
     </BrowserRouter>
