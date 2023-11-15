@@ -14,7 +14,7 @@ const EditPost = () => {
     const {id} = useParams();
 
     useEffect(()=> {
-        axios.get(`http://localhost:8000/api/gamepost/${id}`)
+        axios.get(`http://localhost:8000/api/gamepost/${id}` , {withCredentials:true})
         .then(res => {
             console.log(res.data)
             setGameTitle(res.data.title)
@@ -28,7 +28,7 @@ const EditPost = () => {
 
     const handleSubmit =(e) => {
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/gamepost/${id}`, {title: gameTitle, genre: gameGenre, description: gameDescription})
+        axios.put(`http://localhost:8000/api/gamepost/${id}`, {title: gameTitle, genre: gameGenre, description: gameDescription}, {withCredentials:true})
         .then(res => {
             console.log(res)
             navigate("/dashboard")

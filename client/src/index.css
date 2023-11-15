@@ -39,6 +39,7 @@
   background-size:cover;
   height: 100vh;
   width: 100vw;
+  background-position: center;
   margin-right: auto;
   margin-left: auto;
   color:rgba(255, 255, 255, 0.988);
@@ -48,6 +49,7 @@
   background-size:cover;
   height: 100vh;
   width: 100vw;
+  background-position: center;
   margin-right: auto;
   margin-left: auto;
   color:rgba(255, 255, 255, 0.988);
@@ -57,16 +59,26 @@
   background-size:cover;
   height: 100vh;
   width: 100vw;
+  background-position: center;
   margin-right: auto;
   margin-left: auto;
   color:rgba(216, 128, 232, 0.988)
 }
-
+.backgroundform {
+  background-image: url("./components/images/pexels-francesco-ungaro-1670977.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(28, 27, 27, 0.988);
+}
 .displaylink{
   color: rgb(14, 219, 195);
 }
 .buttonlink{
-  color: rgb(244, 244, 244)
+  color: rgb(40, 39, 39)
 }
 /* .backgroundlogin {
   background-image: url("./components/images/pexels-mads-thomsen-2739013.jpg");

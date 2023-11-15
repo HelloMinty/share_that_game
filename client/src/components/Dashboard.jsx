@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios";
 
 
@@ -8,9 +8,10 @@ const Dashboard = (props) => {
     const [allGamePosts, setAllGamePosts]= useState([]);
     const [loggedUserInfo, setLoggedUserInfo] = useState({});
     const { loggedUserId, setLoggedUserId} = props;
+    const navigate = useNavigate()
     
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/getoneuser/${loggedUserId}`)
+        axios.get(`http://localhost:8000/api/getoneuser/${loggedUserId}`, {withCredentials:true})
         .then(res => {
             console.log(res)
             setLoggedUserInfo(res.data)
@@ -21,7 +22,7 @@ const Dashboard = (props) => {
     },[loggedUserId])
 
     useEffect(()=> {
-        axios.get("http://localhost:8000/api/gamepost")
+        axios.get("http://localhost:8000/api/gamepost", {withCredentials:true})
         .then(res => {
             console.log(res)
             setAllGamePosts(res.data)
@@ -32,9 +33,18 @@ const Dashboard = (props) => {
     },[])
 
 
+    const logoutUser = () => {
+        axios.post('http://localhost:8000/api/logoutUser', {},{withCredentials:true})
+            .then((res) => {
+                navigate('/')
+            })
+            .catch((err) => {
+                navigate('/')
+            })
+    }
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:8000/api/gamepost/${id}`)
+        axios.delete(`http://localhost:8000/api/gamepost/${id}`, {withCredentials:true})
         .then(res=>{
             console.log(res)
             const filteredGamePost = allGamePosts.filter(gamepost =>{
@@ -49,7 +59,7 @@ const Dashboard = (props) => {
         <div className='backgrounddashboard'>
                 <h1 className='p-3 '>{loggedUserInfo.userName}'s Dashboard</h1>
                 <h3 className='p-3 mb-2 '>Welcome {loggedUserInfo.userName}!</h3>
-                <button className="btn btn-outline-danger border-3 mt-2 mb-2 ms-1"><Link to={"/logout"} className='buttonlink'>Logout</Link></button>
+                <button className="btn btn-outline-danger border-3 mt-2 mb-2 ms-1 buttonlink " onClick={logoutUser} > Logout</button>
                 <main>
                     <h2>Game Posts</h2>
                     <button className="btn btn-outline-success border-3  mt-2 mb-4 ms-1"><Link to={"/gameform"} className='buttonlink'>Add A Post!</Link></button>
