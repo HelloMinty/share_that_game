@@ -10,6 +10,9 @@ import EditPost from './components/EditPost';
 import GamePostDetails from './components/GamePostDetails';
 // import CommentComponent from './components/CommentComponent';
 import Nav from './components/Nav';
+import About from './components/About';
+import Profile from './components/Profile';
+import EditUserProfile from './components/EditUserProfile';
 
 
 
@@ -27,6 +30,7 @@ function App() {
         <Routes>
           <Route index element={<  Register/>} />
           <Route path="/logout" element={<Logout/>} />
+          <Route path="/about" element={<About/>} />
           <Route path="/login" element={<Login
             loggedUserId={loggedUserId} setLoggedUserId={setLoggedUserId}
           />} />
@@ -37,6 +41,10 @@ function App() {
             loggedUserId={loggedUserId} setLoggedUserId={setLoggedUserId}
           />} />
           <Route path="/edit/:id" element={<EditPost/>} />
+          <Route path="/edit/user/:id" element={<EditUserProfile/>} />
+          <Route path="/profile/:id" element={<Profile
+          loggedUserId={loggedUserId} setLoggedUserId={setLoggedUserId}
+          />} />
           <Route path="/details/:id" element={<GamePostDetails
             comment={comment} setComment={setComment}
             comments={comments} setComments={setComments}

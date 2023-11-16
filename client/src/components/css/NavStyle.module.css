@@ -6,6 +6,7 @@ nav{
     align-items: center;
     gap:2rem;
     padding: 0 1rem;
+    border-radius: 5%;
 }
 nav ul {
     padding: 0;
@@ -16,13 +17,19 @@ nav ul {
 }
 .navLink {
     color: inherit;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-decoration: none;
+
+}
+.navLink:hover {
+    color:rgb(243, 251, 87)
 }
 .siteTitle{
     color: inherit;
     font-size: 2.5rem;
     text-decoration: none;
+}.siteTitle:hover{
+    color:aqua;
 }
 nav li:hover{
     background-color: #777;
@@ -30,7 +37,5 @@ nav li:hover{
 .logoStyle{
     height: 7rem;
     width:7rem;
+    margin-left:-17px;
 }
-/* h2{
-    margin-left: -10rem;
-} */

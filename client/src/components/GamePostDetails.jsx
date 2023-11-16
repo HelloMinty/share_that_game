@@ -95,23 +95,12 @@ const GamePostDetails = (props) => {
                     <li>Description: {gamePostDetails.description}</li>
                     <img className={styles.imageSize} src={image}></img>
                     <br></br>
-                    <l1 className={styles.postedText}>Posted By: {userName}</l1>
+                    <l1 className={styles.postedText}><Link to={`/profile/${userId}`}>Posted By: {userName}</Link></l1>
                 </ul>
             </div>
             <div className={styles.mainContainer}>
-                <div className={styles.chatFlex}>
-                    <h3 className={styles.commentText}>Live Chat</h3>
-                    <textarea 
-                        value={comment}
-                        className={styles.inputBox}
-                        onChange={onChangeHandler}
-                    />
-                    <button 
-                        className={styles.chatSubmit}
-                        onClick={onClickHandler}
-                        >Send</button>
-                </div>
-                        <hr></hr>
+                <h3 className={styles.commentText}>Live Chat</h3>
+                    <hr></hr>
                     {allComments.map((text)=>(
                         <div key={text._id} className={styles.commentContainer}>
                             <p className={styles.chatText}><span className={styles.userText}>{text.postedBy}</span>: {text.comment}</p>
@@ -119,6 +108,18 @@ const GamePostDetails = (props) => {
                             <hr></hr>
                         </div>
                     ))}
+                    <div className={styles.chatFlex}>
+                        <h3>Message</h3>
+                        <textarea 
+                            value={comment}
+                            className={styles.inputBox}
+                            onChange={onChangeHandler}
+                        />
+                        <button 
+                            className={styles.chatSubmit}
+                            onClick={onClickHandler}
+                            >Send</button>
+                    </div>
             
             </div>
         </div>

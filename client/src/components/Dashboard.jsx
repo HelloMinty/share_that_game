@@ -73,7 +73,6 @@ const Dashboard = (props) => {
     return (
         <div className='backgrounddashboard'>
                 <h1 className='p-3 '>{loggedUserInfo.userName}'s Dashboard</h1>
-                <button className="btn btn-outline-danger border-3 mt-2 mb-2 ms-1"><Link to={"/logout"} className='buttonlink'>Logout</Link></button>
                 <main>
                     <h2>Game Posts</h2>
                     <button className="btn btn-outline-success border-3  mt-2 mb-4 ms-1"><Link to={"/gameform"} className='buttonlink'>Add A Post!</Link></button>
@@ -98,24 +97,29 @@ const Dashboard = (props) => {
                             })
                         }
                     </div>
-                    <div className={styles.inputWrapper}>
-                        <FaSearch id= "search-icon"/>
-                        <input
-                            placeholder="Type to search..."
-                            value={input}
-                            onChange={(e) => handleChange(e.target.value)}
-                        />
+                    <div className={styles.searchContainer}>
+                        <div className={styles.inputWrapper}>
+                            <FaSearch id= "search-icon"/>
+                            <input
+                                className={styles.inputSearch}
+                                placeholder="Type to search..."
+                                value={input}
+                                onChange={(e) => handleChange(e.target.value)}
+                            />
+                        </div>
                     </div>
-                    <div>
-                        {results.map((result,id)=>{
-                            return(
-                                <div key={id}>
-                                    <Link to={`/details/${result._id}`}className={styles.resultText}>{result.title}</Link>
-                                </div>
-                            )   
-                        })}
+                        <div className={styles.searchDisplay}>
                             
-                    </div>
+                            {results.map((result,id)=>{
+                                return(
+                                    <div key={id}>
+                                        <Link to={`/details/${result._id}`}className={styles.resultText}>{result.title}</Link>
+                                    </div>
+                                )   
+                            })}
+                                
+                        </div>
+                    
                 </main>
 
         </div>

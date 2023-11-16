@@ -68,5 +68,17 @@ module.exports = {
             res.status(400).json(err)
         })
     },
+    editOneUser: (req, res) => {
+        UserInfo.updateOne({_id: req.params.id}, req.body,{
+            new: true,
+            runValidators: true,
+        })
+        .then(updatedUser =>{
+            res.json(updatedUser)
+        })
+        .catch(err => {
+            res.status(400).json(err)
+        })
+    }
     
 }

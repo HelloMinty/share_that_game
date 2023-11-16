@@ -1,12 +1,12 @@
 .inputWrapper {
-    background-color: rgb(226, 191, 191);
-    width:50%;
+    background-color: rgb(167, 160, 160);
+    width:20%;
     border-radius: 10px;
     height:2.5rem;
     padding: 0 15px;
-    box-shadow: 0px 0px 8px #ddd;
+    box-shadow: 0px 0px 15px #ddd;
 }
-input{
+.inputSearch{
     background-color: transparent;
     border: none;
     height:90%;
@@ -15,5 +15,28 @@ input{
     margin-left:5px;
 }
 .resultText{
-    color:white
+    color:white;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+.resultText:hover{
+    color:rgb(158, 230, 103);
+    
+}
+.searchContainer{
+    display:flex;
+    justify-content: center;
+}
+.infoContainer{
+    border: 5px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    font-size: 20px;
+}
+.searchDisplay{
+    margin-top: 1rem;
 }

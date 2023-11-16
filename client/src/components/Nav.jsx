@@ -27,19 +27,22 @@ const Nav = (props) => {
                 <Link className={styles.siteTitle} to ={"/dashboard"}><img className={styles.logoStyle} src={logo}></img> Share That Game</Link>
                 {
                     loggedUserInfo
-                    ? <h2 className={styles.welcomeStyle}>Welcome {loggedUserInfo.userName}!</h2>
+                    ? <h2 className={styles.welcomeStyle}>Welcome!</h2>
                     : null
                 }
                 
                 <ul>
                     <li>
-                        <Link className={styles.navLink}to={"/dashboard"}>Button</Link>
+                        <Link className={styles.navLink} to={`/profile/${loggedUserId}`}>Profile</Link>
                     </li>
                     <li>
                         <Link className={styles.navLink} to={"/about"}>About</Link>
                     </li>
                     <li>
                         <Link className={styles.navLink} to={"/dashboard"}>Home</Link>
+                    </li>
+                    <li>
+                        <button className="btn btn-outline-danger border-3 mt-2 mb-2 ms-1"><Link to={"/logout"} className='buttonlink'>Logout</Link></button>
                     </li>
                 </ul>
             </nav>
