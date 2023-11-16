@@ -90,9 +90,9 @@ const GamePostDetails = (props) => {
                 <h1>{gamePostDetails.title} Details</h1>
 
                 <ul>
-                    <li className={styles.titleText}>Game Title: {gamePostDetails.title}</li>
-                    <li className={styles.genreText}>Genre: {gamePostDetails.genre}</li>
-                    <li>Description: {gamePostDetails.description}</li>
+                    <p className={styles.titleText}>Game Title: {gamePostDetails.title}</p>
+                    <p className={styles.genreText}>Genre: {gamePostDetails.genre}</p>
+                    <p>Description: {gamePostDetails.description}</p>
                     <img className={styles.imageSize} src={image}></img>
                     <br></br>
                     <l1 className={styles.postedText}><Link to={`/profile/${userId}`}>Posted By: {userName}</Link></l1>

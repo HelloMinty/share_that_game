@@ -1,4 +1,96 @@
+#html {
+  margin: 0px;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+}
+#body {
+  margin: 0px;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+}
 
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+
+
+
+
+
+#root {
+
+  margin: 0 auto;
+  height: 100%;
+  padding: 0;
+  text-align: center;
+}
+.backgroundregister {
+  background-image: url("./components/images/pexels-lalesh-aldarwish-194511.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(255, 255, 255, 0.988);
+}
+.backgroundlogin {
+  background-image: url("./components/images/pexels-tomasz-filipek-1637436.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(255, 255, 255, 0.988);
+}
+.backgrounddashboard {
+  background-image: url("./components/images/pexels-garrett-morrow-2885014.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(216, 128, 232, 0.988)
+}
+.backgroundform {
+  background-image: url("./components/images/pexels-arturo-eg-6611630.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(249, 249, 249, 0.988);
+}
+.backgroundedit {
+  background-image: url("./components/images/pexels-arturo-eg-6611630.jpg");
+  background-size:cover;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+  color:rgba(249, 249, 249, 0.988);
+}
+.displaylink{
+  color: rgb(14, 219, 195);
+}
+.buttonlink{
+  color: rgb(251, 248, 248)
+}
+/* 
 #root {
   max-width: 100%;
   margin: 0 auto;
@@ -49,4 +141,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */

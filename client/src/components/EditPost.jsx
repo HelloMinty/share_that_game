@@ -40,43 +40,45 @@ const EditPost = () => {
     }
 
     return (
-        <div>
-            <Link to={"/dashboard"}>Home</Link>
-            <h1>Edit A Game Post</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    {Errors.title? <p>{Errors.title.message}</p> : null}
-                    <label>Game Title: </label>
-                        <input
-                            type="text"
-                            id="title"
-                            value={gameTitle}
-                            onChange={(e) => setGameTitle(e.target.value)}
-                        />
-                </div>
-                <div>
-                {Errors.genre? <p>{Errors.genre.message}</p> : null}
-                    <label>Genre: </label>
-                        <input
-                            type="text"
-                            id="genre"
-                            value={gameGenre}
-                            onChange={(e) => setGameGenre(e.target.value)}
-                        />
-                </div>
-                <div>
-                {Errors.description? <p>{Errors.description.message}</p> : null}
-                    <label>Description: </label>
-                        <textarea
-                            type="text"
-                            id="description"
-                            value={gameDescription}
-                            onChange={(e) => setGameDescription(e.target.value)}
-                        />
-                </div>
-                <button>Submit</button>
-            </form>
-        </div>
+        <div className='backgroundedit'>
+        <h1 className='p-3 '>Edit The Game Post</h1>
+        <form onSubmit={handleSubmit} className='w-25 mx-auto'>
+            <div className="mt-4 ">
+                {Errors.title? <p className="alert alert-danger p-1">{Errors.title.message}</p> : null}
+                <label className="form-label  h4  ">Game Title: </label>
+                    <input
+                    className="form-control mb-5"
+                        type="text"
+                        id="title"
+                        value={gameTitle}
+                        onChange={(e) => setGameTitle(e.target.value)}
+                    />
+            </div>
+            <div>
+            {Errors.genre? <p className="alert alert-danger p-1">{Errors.genre.message}</p> : null}
+                <label className="form-label  h4  ">Genre: </label>
+                    <input
+                    className="form-control mb-5"
+                        type="text"
+                        id="genre"
+                        value={gameGenre}
+                        onChange={(e) => setGameGenre(e.target.value)}
+                    />
+            </div>
+            <div>
+            {Errors.description? <p className="alert alert-danger p-1">{Errors.description.message}</p > : null}
+                <label className="form-label  h4 ">Description: </label>
+                    <textarea
+                    className="form-control mb-5"
+                        type="text"
+                        id="description"
+                        value={gameDescription}
+                        onChange={(e) => setGameDescription(e.target.value)}
+                    />
+            </div>
+            <button className="btn btn-outline-warning border-3 mt-2 mb-4  buttonlink">Submit</button>
+        </form>
+    </div>
     )
 }
 export default EditPost;

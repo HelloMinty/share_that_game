@@ -90,14 +90,14 @@ const Dashboard = (props) => {
                         {
                             allGamePosts.map((gamepost) => {
                                 return(
-                                    <div key={gamepost._id} className=" p-3 mb-3 mb w-25 mx-auto border border-3 border-info  text-emphasis-info rounded-4 ">
+                                    <div key={gamepost._id} className=" p-3 mb-5 mb w-25 mx-auto border border-3 border-info  text-emphasis-info rounded-4 ">
                                         <p>Game Title : {gamepost.title}</p>
 
                                         {gamepost.postedBy == loggedUserId 
                                         ? <Link to={`/edit/${gamepost._id}`} className='displaylink'>Edit</Link>
                                         : null}
                                         {gamepost.postedBy == loggedUserId 
-                                        ? <button onClick={()=> handleDelete(gamepost._id)}>Delete</button>
+                                        ? <button className="btn btn-outline-danger border-1 mt-1 mb-1 ms-3 me-3  rounded-pill" onClick={()=> handleDelete(gamepost._id)}>Delete</button>
                                         : null}
                                         <Link to={`/details/${gamepost._id}`}> Details</Link>
 

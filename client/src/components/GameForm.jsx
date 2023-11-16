@@ -53,56 +53,106 @@ const GameForm = (props) => {
 
     return (
         <div className='backgroundform'>
-            <Link to={"/dashboard"}>Home</Link>
-            <h1 className='p-3 '>This is the gameform</h1>
-            <form onSubmit={handleSubmit} className='w-25 mx-auto'>
-                <div>
-                    {Errors.title? <p className="alert alert-danger p-1">{Errors.title.message}</p> : null}
-                    <label className="form-label  h4 mt-4 ">Game Title: </label>
-                        <input
-                        className="form-control"
-                            type="text"
-                            value={gameTitle}
-                            onChange={(e) => setGameTitle(e.target.value)}
-                        />
-                </div>
-                <div>
-                {Errors.genre? <p className="alert alert-danger p-1">{Errors.genre.message}</p> : null}
-                    <label className="form-label  h4 mt-4 ">Genre: </label>
-                        <input
-                        className="form-control"
-                            type="text"
-                            value={gameGenre}
-                            onChange={(e) => setGameGenre(e.target.value)}
-                        />
-                </div>
-                <div>
-                {Errors.description? <p className="alert alert-danger p-1">{Errors.description.message}</p> : null}
-                    <label className="form-label h4 mt-4">Description: </label>
-                        <textarea
-                        className="form-control"
-                            type="text"
-                            value={gameDescription}
-                            onChange={(e) => setGameDescription(e.target.value)}
-                        />
-                </div>
-                    <br/><br/>
-                <div>
-                    <input 
-                    className="form-control"
-                        type="file" 
-                        onChange={handleFile}
+        <h1 className='p-3 '>Add Game Here</h1>
+        <form onSubmit={handleSubmit} className='w-25 mx-auto border border-3 border-info-subtle p-5'>
+            <div>
+                {Errors.title? <p className="alert alert-danger p-1">{Errors.title.message}</p> : null}
+                <label className="form-label  h4  ">Game Title: </label>
+                    <input
+                    className="form-control mb-5"
+                        type="text"
+                        value={gameTitle}
+                        onChange={(e) => setGameTitle(e.target.value)}
                     />
-                    <br/><br/>
-                    {image
-                    ?   <img className={styles.imageSize} src ={image}></img>    
-                    :   null
-                    }
+            </div>
+            <div>
+            {Errors.genre? <p className="alert alert-danger p-1">{Errors.genre.message}</p> : null}
+                <label className="form-label  h4  ">Genre: </label>
+                    <input
+                    className="form-control mb-5"
+                        type="text"
+                        value={gameGenre}
+                        onChange={(e) => setGameGenre(e.target.value)}
+                    />
+            </div>
+            <div>
+            {Errors.description? <p className="alert alert-danger p-1">{Errors.description.message}</p> : null}
+                <label className="form-label h4 ">Description: </label>
+                    <textarea
+                    className="form-control mb-5"
+                        type="text"
+                        value={gameDescription}
+                        onChange={(e) => setGameDescription(e.target.value)}
+                    />
+            </div>
+                <br/><br/>
+            <div>
+                <input 
+                className="form-control"
+                    type="file" 
+                    onChange={handleFile}
+                />
+                <br/><br/>
+                {image
+                ?   <img className={styles.imageSize} src ={image}></img>    
+                :   null
+                }
+                
+            </div>
+            <button className='btn btn-primary mt-2'>Submit</button>
+        </form>
+    </div>
+        // <div className='backgroundform'>
+        //     <Link to={"/dashboard"}>Home</Link>
+        //     <h1 className='p-3 '>This is the gameform</h1>
+        //     <form onSubmit={handleSubmit} className='w-25 mx-auto'>
+        //         <div>
+        //             {Errors.title? <p className="alert alert-danger p-1">{Errors.title.message}</p> : null}
+        //             <label className="form-label  h4 mt-4 ">Game Title: </label>
+        //                 <input
+        //                 className="form-control"
+        //                     type="text"
+        //                     value={gameTitle}
+        //                     onChange={(e) => setGameTitle(e.target.value)}
+        //                 />
+        //         </div>
+        //         <div>
+        //         {Errors.genre? <p className="alert alert-danger p-1">{Errors.genre.message}</p> : null}
+        //             <label className="form-label  h4 mt-4 ">Genre: </label>
+        //                 <input
+        //                 className="form-control"
+        //                     type="text"
+        //                     value={gameGenre}
+        //                     onChange={(e) => setGameGenre(e.target.value)}
+        //                 />
+        //         </div>
+        //         <div>
+        //         {Errors.description? <p className="alert alert-danger p-1">{Errors.description.message}</p> : null}
+        //             <label className="form-label h4 mt-4">Description: </label>
+        //                 <textarea
+        //                 className="form-control"
+        //                     type="text"
+        //                     value={gameDescription}
+        //                     onChange={(e) => setGameDescription(e.target.value)}
+        //                 />
+        //         </div>
+        //             <br/><br/>
+        //         <div>
+        //             <input 
+        //             className="form-control"
+        //                 type="file" 
+        //                 onChange={handleFile}
+        //             />
+        //             <br/><br/>
+        //             {image
+        //             ?   <img className={styles.imageSize} src ={image}></img>    
+        //             :   null
+        //             }
                     
-                </div>
-                <button className='btn btn-primary mt-2'>Submit</button>
-            </form>
-        </div>
+        //         </div>
+        //         <button className='btn btn-primary mt-2'>Submit</button>
+        //     </form>
+        // </div>
     )
 }
 export default GameForm;

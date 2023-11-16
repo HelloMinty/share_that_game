@@ -1,5 +1,5 @@
 import styles from "../components/css/NavStyle.module.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState} from "react";
 import axios from "axios";
 import logo from "../components/images/logo.jpg"
@@ -8,7 +8,7 @@ import logo from "../components/images/logo.jpg"
 const Nav = (props) => {
     const [loggedUserInfo, setLoggedUserInfo] = useState({});
     const {loggedUserId, setLoggedUserId} = props;
-
+    const navigate = useNavigate()
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/getoneuser/${loggedUserId}`)
         .then(res => {
@@ -19,6 +19,16 @@ const Nav = (props) => {
             console.log(err)
         })
     },[loggedUserId])
+
+    const logoutUser = () => {
+        axios.post('http://localhost:8000/api/logoutUser', {},{withCredentials:true})
+            .then((res) => {
+                navigate('/')
+            })
+            .catch((err) => {
+                navigate('/')
+            })
+    }
 
 
     return(
@@ -42,7 +52,7 @@ const Nav = (props) => {
                         <Link className={styles.navLink} to={"/dashboard"}>Home</Link>
                     </li>
                     <li>
-                        <button className="btn btn-outline-danger border-3 mt-2 mb-2 ms-1"><Link to={"/logout"} className='buttonlink'>Logout</Link></button>
+                    <button className="btn logoutlink" onClick={logoutUser}>Logout</button>
                     </li>
                 </ul>
             </nav>
