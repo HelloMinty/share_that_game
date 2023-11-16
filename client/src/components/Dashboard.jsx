@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios";
 import {FaSearch} from "react-icons/fa";
 import styles from "../components/css/SearchBarStyle.module.css";
@@ -14,9 +14,10 @@ const Dashboard = (props) => {
     const [input, setInput] = useState("");
     const [results, setResults] =useState([]);
     const { loggedUserId, setLoggedUserId} = props;
+    const navigate = useNavigate()
     
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/getoneuser/${loggedUserId}`)
+        axios.get(`http://localhost:8000/api/getoneuser/${loggedUserId}`, {withCredentials:true})
         .then(res => {
             console.log(res)
             setLoggedUserInfo(res.data)
@@ -27,7 +28,7 @@ const Dashboard = (props) => {
     },[loggedUserId])
 
     useEffect(()=> {
-        axios.get("http://localhost:8000/api/gamepost")
+        axios.get("http://localhost:8000/api/gamepost", {withCredentials:true})
         .then(res => {
             console.log(res)
             setAllGamePosts(res.data)
@@ -38,9 +39,18 @@ const Dashboard = (props) => {
     },[])
 
 
+    const logoutUser = () => {
+        axios.post('http://localhost:8000/api/logoutUser', {},{withCredentials:true})
+            .then((res) => {
+                navigate('/')
+            })
+            .catch((err) => {
+                navigate('/')
+            })
+    }
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:8000/api/gamepost/${id}`)
+        axios.delete(`http://localhost:8000/api/gamepost/${id}`, {withCredentials:true})
         .then(res=>{
             console.log(res)
             const filteredGamePost = allGamePosts.filter(gamepost =>{

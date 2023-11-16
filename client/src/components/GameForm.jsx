@@ -24,7 +24,7 @@ const GameForm = (props) => {
             postedBy: loggedUserId,
             image: image
 
-        })
+        } , {withCredentials:true})
         .then(res => {
             console.log(res)
             setGamePostedBy(loggedUserId)
@@ -52,32 +52,35 @@ const GameForm = (props) => {
     }
 
     return (
-        <div>
+        <div className='backgroundform'>
             <Link to={"/dashboard"}>Home</Link>
-            <h1>This is the gameform</h1>
-            <form onSubmit={handleSubmit}>
+            <h1 className='p-3 '>This is the gameform</h1>
+            <form onSubmit={handleSubmit} className='w-25 mx-auto'>
                 <div>
-                    {Errors.title? <p>{Errors.title.message}</p> : null}
-                    <label>Game Title: </label>
+                    {Errors.title? <p className="alert alert-danger p-1">{Errors.title.message}</p> : null}
+                    <label className="form-label  h4 mt-4 ">Game Title: </label>
                         <input
+                        className="form-control"
                             type="text"
                             value={gameTitle}
                             onChange={(e) => setGameTitle(e.target.value)}
                         />
                 </div>
                 <div>
-                {Errors.genre? <p>{Errors.genre.message}</p> : null}
-                    <label>Genre: </label>
+                {Errors.genre? <p className="alert alert-danger p-1">{Errors.genre.message}</p> : null}
+                    <label className="form-label  h4 mt-4 ">Genre: </label>
                         <input
+                        className="form-control"
                             type="text"
                             value={gameGenre}
                             onChange={(e) => setGameGenre(e.target.value)}
                         />
                 </div>
                 <div>
-                {Errors.description? <p>{Errors.description.message}</p> : null}
-                    <label>Description: </label>
+                {Errors.description? <p className="alert alert-danger p-1">{Errors.description.message}</p> : null}
+                    <label className="form-label h4 mt-4">Description: </label>
                         <textarea
+                        className="form-control"
                             type="text"
                             value={gameDescription}
                             onChange={(e) => setGameDescription(e.target.value)}
@@ -86,6 +89,7 @@ const GameForm = (props) => {
                     <br/><br/>
                 <div>
                     <input 
+                    className="form-control"
                         type="file" 
                         onChange={handleFile}
                     />
@@ -96,7 +100,7 @@ const GameForm = (props) => {
                     }
                     
                 </div>
-                <button>Submit</button>
+                <button className='btn btn-primary mt-2'>Submit</button>
             </form>
         </div>
     )
