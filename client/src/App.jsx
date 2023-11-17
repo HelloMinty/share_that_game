@@ -16,7 +16,7 @@ import EditUserProfile from './components/EditUserProfile';
 import socketIO from "socket.io-client";
 
 
-
+const socket = socketIO.connect("http://localhost:8000");
 function App() {
   const [loggedUserId, setLoggedUserId] = useState("")
   const [comment, setComment] = useState("");
