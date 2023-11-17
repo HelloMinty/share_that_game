@@ -2,6 +2,7 @@ import { useEffect , useState } from "react";
 import { Link, useParams} from "react-router-dom";
 import axios from "axios"
 import styles from './css/CommentStyle.module.css'
+import io from "socket.io-client";
 
 
 
@@ -19,6 +20,7 @@ const GamePostDetails = (props) => {
     const [image, setImage] = useState();
     const {id} = useParams();
     const { loggedUserId } = props;
+    const [socket] = useState(() => io(":8000"));
 
 
     const onChangeHandler = (e) => {
@@ -42,7 +44,12 @@ const GamePostDetails = (props) => {
         axios.post("http://localhost:8000/api/gamecomments", {comment: comment, postedBy: loggedUserInfo.userName })
         .then(res => {
             console.log(res)
-            setAllComments([...allComments, comment])
+            socket.emit("message", {
+                text: comment,
+                socketID: socket.id,
+                postedBy: loggedUserInfo.userName,
+            })
+            socket.on("client_messages", data => setAllComments(allComments => [data, ...allComments]))
             // setGamePostedBy(loggedUserInfo.userName)
 
         })
@@ -104,13 +111,16 @@ const GamePostDetails = (props) => {
             <div className={styles.mainContainer}>
                 <h3 className={styles.commentText}>Live Chat</h3>
                     <hr></hr>
-                    {allComments.map((text)=>(
-                        <div key={text.socketID} className={styles.commentContainer}>
-                            <p className={styles.chatText}><span className={styles.userText}>{text.postedBy}</span>: {text.text}</p>
-                            <p><span className={styles.dateText}>@ {text.createdAt}</span></p>
-                            <hr></hr>
-                        </div>
-                    ))}
+                    {allComments.map((text)=>{
+                        console.log(text)
+                        return (
+                            <div key={text.socketID} className={styles.commentContainer}>
+                                <p className={styles.chatText}><span className={styles.userText}>{text.postedBy}</span>: {text.text}</p>
+                                <p><span className={styles.dateText}>@ {text.createdAt}</span></p>
+                                <hr></hr>
+                            </div>
+                        )
+                    })}
                     <div className={styles.chatFlex}>
                         <h3>Message</h3>
                         <textarea 
