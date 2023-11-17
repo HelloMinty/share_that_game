@@ -52,13 +52,9 @@ const Nav = (props) => {
                     <li>
                         <Link className={styles.navLink} to={"/dashboard"}>Home</Link>
                     </li>
-                        {id
-                        ?   <li>
-                                <button className="btn logoutlink" onClick={logoutUser}>Logout</button>
-                            </li> 
-                        : null
-                        }
-                    
+                    <li>
+                        <button className="btn logoutlink" onClick={logoutUser}>Logout</button>
+                    </li> 
                 </ul>
             </nav>
         </div>
