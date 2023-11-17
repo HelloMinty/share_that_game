@@ -13,6 +13,7 @@ import Nav from './components/Nav';
 import About from './components/About';
 import Profile from './components/Profile';
 import EditUserProfile from './components/EditUserProfile';
+import socketIO from "socket.io-client";
 
 
 
@@ -49,6 +50,7 @@ function App() {
             comment={comment} setComment={setComment}
             comments={comments} setComments={setComments}
             loggedUserId={loggedUserId} setLoggedUserId={setLoggedUserId}
+            socket={socket}
           />} />
           {/* <Route path="/comment" element={<CommentComponent/>} /> */}
         </Routes>

@@ -105,8 +105,8 @@ const GamePostDetails = (props) => {
                 <h3 className={styles.commentText}>Live Chat</h3>
                     <hr></hr>
                     {allComments.map((text)=>(
-                        <div key={text._id} className={styles.commentContainer}>
-                            <p className={styles.chatText}><span className={styles.userText}>{text.postedBy}</span>: {text.comment}</p>
+                        <div key={text.socketID} className={styles.commentContainer}>
+                            <p className={styles.chatText}><span className={styles.userText}>{text.postedBy}</span>: {text.text}</p>
                             <p><span className={styles.dateText}>@ {text.createdAt}</span></p>
                             <hr></hr>
                         </div>
