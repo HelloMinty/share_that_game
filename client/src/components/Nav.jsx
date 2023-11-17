@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState} from "react";
 import axios from "axios";
 import logo from "../components/images/logo.jpg"
-
+import { useParams } from "react-router-dom";
 
 const Nav = (props) => {
     const [loggedUserInfo, setLoggedUserInfo] = useState({});
     const {loggedUserId, setLoggedUserId} = props;
+    const {id}= useParams();
     const navigate = useNavigate()
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/getoneuser/${loggedUserId}`)
@@ -51,9 +52,13 @@ const Nav = (props) => {
                     <li>
                         <Link className={styles.navLink} to={"/dashboard"}>Home</Link>
                     </li>
-                    <li>
-                    <button className="btn logoutlink" onClick={logoutUser}>Logout</button>
-                    </li>
+                        {id
+                        ?   <li>
+                                <button className="btn logoutlink" onClick={logoutUser}>Logout</button>
+                            </li> 
+                        : null
+                        }
+                    
                 </ul>
             </nav>
         </div>

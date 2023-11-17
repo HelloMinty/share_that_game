@@ -1,9 +1,8 @@
-import React from 'react'
 import { useState } from 'react'
 import styles from '../components/css/Profile.module.css'
 import defaultImg from '../components/images/default.png'
 import { useEffect } from 'react'
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios'
 const EditUserProfile = () => {
     const [image, setImage]= useState();
@@ -31,7 +30,10 @@ const EditUserProfile = () => {
                 "Content-Type" : "multipart/form-data"
             },
         })
-        .then(res => setImage(URL.createObjectURL(file)))
+        .then(res => {
+            console.log(res)
+            setImage(URL.createObjectURL(file))
+        })
         .catch(err => {
             console.log(err)
         })
@@ -41,6 +43,7 @@ const EditUserProfile = () => {
         axios.put(`http://localhost:8000/api/editoneuser/${id}`, 
         {userName: userInfo.userName, email: userInfo.email ,profilePicture: image})
         .then(res=> {
+            console.log(res)
             setImage(image);
         })
         .catch(err=> {

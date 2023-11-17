@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import { Link, useParams} from "react-router-dom";
 import axios from 'axios'
 const Profile = (props) => {
-    const [image, setImage]= useState();
     const [userInfo, setUserInfo] = useState({});
     const{loggedUserId} = props;
     const {id} = useParams();

@@ -1,7 +1,6 @@
 import { useEffect , useState } from "react";
 import { Link, useParams} from "react-router-dom";
 import axios from "axios"
-import CommentComponent from "./CommentComponent";
 import styles from './css/CommentStyle.module.css'
 
 
@@ -19,7 +18,7 @@ const GamePostDetails = (props) => {
     const [loggedUserInfo, setLoggedUserInfo] = useState({});
     const [image, setImage] = useState();
     const {id} = useParams();
-    const { loggedUserId, setLoggedUserId} = props;
+    const { loggedUserId } = props;
 
 
     const onChangeHandler = (e) => {
@@ -42,7 +41,7 @@ const GamePostDetails = (props) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/gamecomments", {comment: comment, postedBy: loggedUserInfo.userName })
         .then(res => {
-            // console.log(res)
+            console.log(res)
             setAllComments([...allComments, comment])
             // setGamePostedBy(loggedUserInfo.userName)
 
@@ -93,7 +92,11 @@ const GamePostDetails = (props) => {
                     <p className={styles.titleText}>Game Title: {gamePostDetails.title}</p>
                     <p className={styles.genreText}>Genre: {gamePostDetails.genre}</p>
                     <p>Description: {gamePostDetails.description}</p>
-                    <img className={styles.imageSize} src={image}></img>
+                    {gamePostDetails.image
+                        ? <img className={styles.imageSize} src={image}></img>
+                        : null
+                    }
+                    
                     <br></br>
                     <l1 className={styles.postedText}><Link to={`/profile/${userId}`}>Posted By: {userName}</Link></l1>
                 </ul>
